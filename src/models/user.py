@@ -1,7 +1,7 @@
 from abc import ABC, abstractmethod
 
 # Base class for farmer and buyer
-class User:
+class User(ABC):
     def __init__(self, name, phone):
         self.name = name
         self.name = phone

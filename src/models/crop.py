@@ -1,12 +1,22 @@
 from product import Product
 
 class Crop(Product):
-    def __init__(self, name, category, quantity=0):
-        super().__init__(name, category, quantity)
-        self.perishable = False
+    def __init__(self, name, price, quantity, crop_type: str, measurement_unit: str, location: str):
+        super().__init__(name, price, quantity)
+        self.crop_type = crop_type # could be grain, tuber, etc...
+        self.measurement_unit = measurement_unit
+        self.location = location
 
-    def set_price(self, price) -> int:
-        pass
+    def change_price(self, new_price: int) -> int:
+        self.price = new_price
 
-    def get_price(self, price) -> int:
-        pass
+    def update_quantity(self, quantity_sold: int) -> bool:
+        if quantity_sold <= self.quantity:
+            self.quantity -= quantity_sold
+            return True
+        return False
+    
+    def is_available(self) -> bool:
+        if self.quantity == 0:
+            return False
+        return True

@@ -1,15 +1,12 @@
 from abc import ABC, abstractmethod
 
 # Base class for crops, livestock and processed goods
-class Product:
-    def __init__(self, name, category, quantity= 0):
+class Product(ABC):
+    def __init__(self, name: str, price: int, quantity: int):
         self.name = name
-        self.category = category
+        self.price = price
         self.quantity = quantity
 
     @abstractmethod
-    def set_price(self, price) -> int:
-        pass
-
-    def get_price(self, price) -> int:
+    def get_info(self, price: int) -> str:
         pass
